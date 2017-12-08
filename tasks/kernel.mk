@@ -13,6 +13,7 @@
 # limitations under the License.
 
 # Android makefile to build kernel as a part of Android Build
+ifneq ($(TARGET_NO_KERNEL),true)
 
 TARGET_AUTO_KDIR := $(shell echo $(TARGET_DEVICE_DIR) | sed -e 's/^device/kernel/g')
 
@@ -347,3 +348,5 @@ endif
 
 .PHONY: kernel
 kernel: $(INSTALLED_KERNEL_TARGET)
+
+endif # TARGET_NO_KERNEL
